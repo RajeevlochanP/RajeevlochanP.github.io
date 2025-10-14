@@ -58,6 +58,15 @@
       "courses": ["Computer and Communication Networks ","Block Chain","Theory of Computation","Database Management System","Operating Systems","Object Oriented Programming","more.."]
     }
   ],
+  "awards": [
+    {
+      "title": "Nobel Prize in Physics",
+      "date": "1921-11-01",
+      "awarder": "Royal Swedish Academy of Sciences",
+      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
+      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+    }
+  ],
   "certificates": [
     {
       "name": "Academic Transcript",
@@ -141,6 +150,18 @@
       ]
     }
   ],
+  "references": [
+    {
+      "name": "Professor John Doe",
+      "icon": "fa-solid fa-laptop",
+      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+    },
+    {
+      "name": "Professor John Doe",
+      "icon": "fa-solid fa-thumbtack",
+      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+    }
+  ],
   "projects": [
     {
       "name": "New Tube",
@@ -157,22 +178,6 @@
       "startDate": "2024-09-01",
       "endDate": "2025-10-30",
       "url": "https://github.com/AtomicX1611/AdVantage"
-    },
-    {
-      "name": "Anonymous Voting Protocol",
-      "summary": "Implemented a complete self-tallying e-voting protocol using Ethereum smart contracts and cryptographic primitives, inspired by the APSIPA 2019 paper by Yikang Lin and Peng Zhang. The protocol is designed for small-scale, anonymous voting scenarios such as corporate board elections.",
-      "highlights": ["Solidity", "anvil","Foundry","ZKP Schnorr","One Out Of T"],
-      "startDate": "2025-08-01",
-      "endDate": "2025-09-30",
-      "url": "https://github.com/RajeevlochanP/AnonymousVoting"
-    },
-    {
-      "name": "TDI MSACO",
-      "summary": "Implemented an improved ant colony optimization algorithm for mobile robot path planning, based on the TDI-MSACO model proposed in recent research. The goal is to generate shorter, more realistic paths with faster convergence in grid-based environments.",
-      "highlights": ["Meta Heuristics","NP-hard","HTML + JS"],
-      "startDate": "2024-06-01",
-      "endDate": "2024-12-30",
-      "url": "https://github.com/RajeevlochanP/TDI-MSACO"
     }
   ]
 }
