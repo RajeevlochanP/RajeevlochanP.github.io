@@ -414,9 +414,9 @@ ninja.data = [{
           description: "A full-stack adaptive video streaming platform inspired by YouTube",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
-            },},{id: "projects-project-2",
-          title: 'project 2',
-          description: "a project with a background image and giscus comments",
+            },},{id: "projects-advantage",
+          title: 'Advantage',
+          description: "A Full stack Ecommerce like reselling platform",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
             },},{
