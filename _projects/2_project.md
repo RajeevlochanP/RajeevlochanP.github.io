@@ -1,81 +1,78 @@
 ---
 layout: page
-title: project 2
-description: a project with a background image and giscus comments
+title: Advantage
+description: A Full stack Ecommerce like reselling platform
 img: assets/img/3.jpg
 importance: 2
 category: work
-giscus_comments: true
+giscus_comments: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+**AdVantage** is a full-stack, peer-to-peer e-commerce platform that uniquely combines reselling and renting functionalities. It enables users to securely list, sell, or rent items through a dynamic and scalable marketplace. The platform features secure JWT-based authentication, efficient product management, and a robust API for handling user transactions.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+---
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+### Architecture Overview
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+AdVantage is built on the MERN stack (MongoDB, Express, React, Node.js). The backend handles user authentication, product listing management (for both sale and rent), and transaction processing. The Node.js server exposes a RESTful API, secured with JWT middleware to protect user-specific routes. MongoDB stores user data, product listings, and transaction histories, with optimized schemas for fast queries.
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+![System Architecture Diagram](assets/img/architecture.jpg)
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+---
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+### Core Features
+
+The platform's frontend, built with React, provides a dynamic user experience for browsing, searching, and managing listings. It communicates with the backend via authenticated API calls to perform actions like creating new listings, placing sell requests, or initiating rental requests.
+
+**Key features include:**
+* **Secure Authentication:** User accounts are protected using JSON Web Tokens (JWT), ensuring secure access to personal data and transaction history.
+* **Dynamic Product Management:** Users have full CRUD (Create, Read, Update, Delete) control over their listings through a clean, intuitive dashboard.
+
+![User Product Management Dashboard](assets/img/advantage-dashboard.png)
+
+Here is the code of File handling using multer in backend
 
 {% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
+```js
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        let uploadPath = "uploads/";
+        let folderPath;
+        if (file.fieldname === "productImages") {
+            if (!req.uniqueFolderPath) {
+                uploadPath += "productImages/";
+                const folderId = Date.now() + "-" + req.user._id;
+                folderPath = path.join(uploadPath, folderId);
+                req.uniqueFolderPath = folderPath; //remember this field!!
+            }else{
+                folderPath=req.uniqueFolderPath;
+            }
+        } else if (file.fieldname === "profilePic") {
+            folderPath = path.join(uploadPath, "profilePics");
+        } else if (file.fieldname === "invoice") {
+            if(req.uniqueFolderPath){
+                folderPath = req.uniqueFolderPath;
+            }else{
+                uploadPath += "productImages/";
+                const folderId = Date.now() + "-" + req.user._id;
+                folderPath = path.join(uploadPath, folderId);
+                req.uniqueFolderPath = folderPath; //remember this field!!
+            }
+        }
+        ensureDirectoryExists(folderPath);
+        cb(null, folderPath);
+    },
+    filename: (req, file, cb) => {
+        //as any way storing in unique folder for every file
+        let fileName;
+        if (file.fieldname === "profilePic") {
+            const extension = path.extname(file.originalname);
+            fileName = req.user._id + extension;
+        } else {
+            fileName = path.basename(file.originalname);
+        }
+        cb(null, fileName);
+    }
+});
 ```
-
 {% endraw %}
