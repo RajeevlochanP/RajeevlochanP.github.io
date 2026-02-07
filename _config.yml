@@ -9,7 +9,8 @@ last_name: Perla
 contact_note: >
   Email is the prefered way to contact me
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  I am Rajeev Lochan, a passionate software developer and open-source enthusiast. 
+  I love creating innovative solutions and contributing to the tech community.
 footer_text: >
   
 keywords: portfolio-website, rajeev, rajeevlochan # add your own keywords or leave empty
@@ -48,7 +49,7 @@ navbar_fixed: true
 footer_fixed: true
 search_enabled: true
 socials_in_search: true
-posts_in_search: true
+posts_in_search: false
 bib_search: true
 
 # Dimensions
@@ -100,7 +101,7 @@ related_blog_posts:
 # Giscus comments (RECOMMENDED)
 # Follow instructions on https://giscus.app/ to setup for your repo to fill out the information below.
 giscus:
-  repo: # <your-github-user-name>/<your-github-repo-name>
+  repo: RajeevlochanP/RajeevlochanP.github.io # <your-github-user-name>/<your-github-repo-name>
   repo_id: # leave empty or specify your repo_id (see https://giscus.app/)
   category: Comments # name of the category under which discussions will be created
   category_id: # leave empty or specify your category_id (see https://giscus.app/)
@@ -144,10 +145,12 @@ newsletter:
 collections:
   books:
     output: false
+    search: false
   news:
     defaults:
       layout: post
     output: true
+    search: false
   projects:
     output: true
 
